@@ -15,7 +15,7 @@ nhrd.mautic.app:
     MAUTIC_DB_USER: root
     MAUTIC_DB_PASSWORD: mysqlrootpassword
     MAUTIC_TRUSTED_PROXIES: 0.0.0.0/0
-    # VIRTUAL_HOST: testmautic.local
+    VIRTUAL_HOST: mkt.nhrd.co
 
 nhrd.mautic.db:
   container_name: nhrd.mautic.db
