@@ -1,0 +1,30 @@
+version: '3'
+services:
+  nhrd.mautic.app:
+    image: nhrd/mautic
+    container_name: nhrd.mautic.app
+    hostname: nhrd.mautic.app
+    # expose:
+    #   - "80"
+    # ports:
+    #   - 8080:80
+    depends_on:
+      - nhrd.mautic.db
+    environment:
+      MAUTIC_DB_HOST: nhrd.mautic.db
+      MAUTIC_DB_USER: root
+      MAUTIC_DB_PASSWORD: mysqlrootpassword
+      MAUTIC_TRUSTED_PROXIES: 0.0.0.0/0
+      # VIRTUAL_HOST: testmautic.local
+
+  nhrd.mautic.db:
+    container_name: nhrd.mautic.db
+    hostname: nhrd.mautic_db
+    image: mysql:5.6
+    # expose:
+    #   - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: mysqlrootpassword
+      MYSQL_DATABASE: mautic
+      MYSQL_USER: root
+      MYSQL_PASSWORD: mautic
