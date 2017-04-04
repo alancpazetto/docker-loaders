@@ -2,7 +2,7 @@
 # services:
 nhrd.mautic.app:
   build: .
-  image: nhrd/mautic
+  image: mautic/mautic
   container_name: nhrd.mautic.app
   hostname: nhrd.mautic.app
   # expose:
