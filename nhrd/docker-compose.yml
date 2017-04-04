@@ -11,11 +11,11 @@ nhrd.mautic.app:
   links:
     - nhrd.mautic.db
   environment:
-    - VIRTUAL_HOST: mkt.nhrd.co
-    - MAUTIC_DB_HOST: nhrd.mautic.db
-    - MAUTIC_DB_USER: root
-    - MAUTIC_DB_PASSWORD: mysqlrootpassword
-    - MAUTIC_TRUSTED_PROXIES: 0.0.0.0/0
+    - VIRTUAL_HOST=mkt.nhrd.co
+    - MAUTIC_DB_HOST=nhrd.mautic.db
+    - MAUTIC_DB_USER=root
+    - MAUTIC_DB_PASSWORD=mysqlrootpassword
+    - MAUTIC_TRUSTED_PROXIES=0.0.0.0/0
 
 nhrd.mautic.db:
   container_name: nhrd.mautic.db
