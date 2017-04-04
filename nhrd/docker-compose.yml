@@ -24,7 +24,7 @@ nhrd.mautic.db:
   # expose:
   #   - "3306"
   environment:
-    - MYSQL_ROOT_PASSWORD: mysqlrootpassword
-    - MYSQL_DATABASE: mautic
-    - MYSQL_USER: root
-    - MYSQL_PASSWORD: mautic
+    MYSQL_ROOT_PASSWORD: mysqlrootpassword
+    MYSQL_DATABASE: mautic
+    MYSQL_USER: root
+    MYSQL_PASSWORD: mautic
