@@ -8,7 +8,7 @@ nhrd.mautic.app:
   #   - "80"
   # ports:
   #   - 8080:80
-  depends_on:
+  links:
     - nhrd.mautic.db
   environment:
     MAUTIC_DB_HOST: nhrd.mautic.db
