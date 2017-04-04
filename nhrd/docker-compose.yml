@@ -11,11 +11,11 @@ nhrd.mautic.app:
   links:
     - nhrd.mautic.db
   environment:
-    MAUTIC_DB_HOST: nhrd.mautic.db
-    MAUTIC_DB_USER: root
-    MAUTIC_DB_PASSWORD: mysqlrootpassword
-    MAUTIC_TRUSTED_PROXIES: 0.0.0.0/0
-    VIRTUAL_HOST: mkt.nhrd.co
+    - VIRTUAL_HOST: mkt.nhrd.co
+    - MAUTIC_DB_HOST: nhrd.mautic.db
+    - MAUTIC_DB_USER: root
+    - MAUTIC_DB_PASSWORD: mysqlrootpassword
+    - MAUTIC_TRUSTED_PROXIES: 0.0.0.0/0
 
 nhrd.mautic.db:
   container_name: nhrd.mautic.db
@@ -24,7 +24,7 @@ nhrd.mautic.db:
   # expose:
   #   - "3306"
   environment:
-    MYSQL_ROOT_PASSWORD: mysqlrootpassword
-    MYSQL_DATABASE: mautic
-    MYSQL_USER: root
-    MYSQL_PASSWORD: mautic
+    - MYSQL_ROOT_PASSWORD: mysqlrootpassword
+    - MYSQL_DATABASE: mautic
+    - MYSQL_USER: root
+    - MYSQL_PASSWORD: mautic
