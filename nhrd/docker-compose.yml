@@ -4,10 +4,10 @@ nhrd.mautic.app:
   image: nhrd/mautic
   container_name: nhrd.mautic.app
   hostname: nhrd.mautic.app
-  # expose:
-  #   - "80"
-  # ports:
-  #   - 8080:80
+  expose:
+    - "80"
+  ports:
+    - 8080:80
   links:
     - nhrd.mautic.db
   environment:
