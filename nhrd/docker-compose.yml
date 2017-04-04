@@ -1,7 +1,7 @@
 # version: '3'
 # services:
 nhrd.mautic.app:
-  build: .
+  # build: .
   image: mautic/mautic
   container_name: nhrd.mautic.app
   hostname: nhrd.mautic.app
