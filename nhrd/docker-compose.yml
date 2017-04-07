@@ -1,5 +1,13 @@
 # version: '3'
 # services:
+nginx-proxy:
+  image: jwilder/nginx-proxy
+  container_name: nginx-proxy
+  ports:
+    - "80:80"
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+    
 nhrd.mautic.app:
   image: nhrd/mautic
   container_name: nhrd.mautic.app
