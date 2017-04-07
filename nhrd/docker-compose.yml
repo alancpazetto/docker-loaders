@@ -6,6 +6,8 @@ nhrd.mautic.app:
   hostname: nhrd.mautic.app
   expose:
     - "8080"
+  ports:
+    - 80
   links:
     - nhrd.mautic.db
   environment:
