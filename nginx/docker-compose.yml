@@ -6,4 +6,4 @@ web:
   volumes:
     - /path/in/vm/www:/usr/share/nginx/html
   external_links:
-    - nhrd.mautic.app
+    - nhrd.mautic.app:nhrd_app
