@@ -5,7 +5,7 @@ nhrd.mautic.app:
   container_name: nhrd.mautic.app
   hostname: nhrd.mautic.app
   expose:
-    - "8080"
+    - "80"
   ports:
     - 80
   links:
