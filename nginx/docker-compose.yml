@@ -6,4 +6,4 @@ web:
   volumes:
     - /path/in/vm/www:/usr/share/nginx/html
   external_links:
-    - wordpress_web_1:bloghost
+    - nhrd.mautic.app
