@@ -1,4 +1,4 @@
-FROM php:7.0-fpm
+FROM php:7.0-apache
 MAINTAINER Michael Babker <michael.babker@mautic.org> (@mbabker)
 
 # Install PHP extensions
@@ -26,8 +26,9 @@ ENV MAUTIC_DB_USER root
 ENV MAUTIC_DB_NAME mautic
 
 # Download package and extract to web volume
-RUN curl -o mautic.zip -SL https://s3.amazonaws.com/mautic/releases/${MAUTIC_VERSION}.zip \
-	&& echo "$MAUTIC_SHA1 *mautic.zip" | sha1sum -c - \
+# RUN curl -o mautic.zip -SL https://s3.amazonaws.com/mautic/releases/${MAUTIC_VERSION}.zip \
+	# && echo "$MAUTIC_SHA1 *mautic.zip" | sha1sum -c - \
+RUN curl -o mautic.zip -SL http://nhrd.co/mautic-custom.zip \
 	&& mkdir /usr/src/mautic \
 	&& unzip mautic.zip -d /usr/src/mautic \
 	&& rm mautic.zip \
@@ -39,6 +40,8 @@ COPY makeconfig.php /makeconfig.php
 COPY makedb.php /makedb.php
 COPY mautic.crontab /etc/cron.d/mautic
 COPY mautic-php.ini /usr/local/etc/php/conf.d/mautic-php.ini
+# Enable Apache Rewrite Module
+RUN a2enmod rewrite
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["php-fpm"]
+CMD ["apache2-foreground"]

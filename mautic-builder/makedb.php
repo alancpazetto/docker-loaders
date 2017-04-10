@@ -2,7 +2,6 @@
 // Args: 0 => makedb.php, 1 => "$MAUTIC_DB_HOST", 2 => "$MAUTIC_DB_USER", 3 => "$MAUTIC_DB_PASSWORD", 4 => "$MAUTIC_DB_NAME"
 $stderr = fopen('php://stderr', 'w');
 fwrite($stderr, "\nEnsuring Mautic database is present\n");
-fwrite($stderr, "\nHAHAHAHAH\n");
 
 if (strpos($argv[1], ':') !== false)
 {
@@ -18,8 +17,6 @@ $maxTries = 10;
 
 do
 {
-	var_dump($argv);
-	
 	$mysql = new mysqli($host, $argv[2], $argv[3], '', (int) $port);
 
 	if ($mysql->connect_error)

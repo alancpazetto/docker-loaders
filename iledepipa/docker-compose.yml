@@ -1,0 +1,21 @@
+mautic:
+  image: nhrd/mautic
+  container_name: iledepipa.mautic.app
+  hostname: iledepipa.mautic.app
+  links:
+    - mauticdb:mysql
+  volumes:
+    - ./volumes/app:/var/www/html
+  environment:
+    - VIRTUAL_HOST=mkt.iledepipa.com.br
+  # ports:
+  #   - 8080:80
+
+mauticdb:
+  image: mysql:5.6
+  container_name: iledepipa.mautic.db
+  hostname: iledepipa.mautic.db
+  volumes:
+     - ./volumes/db:/var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: XiNCSiuVqK34

@@ -1,38 +1,74 @@
-# version: '3'
-# services:
-# nginx-proxy:
-#   image: jwilder/nginx-proxy
-#   container_name: nginx-proxy
-#   ports:
-#     - "80:80"
+# iledepipa.mautic.app:
+#   image: nhrd/mautic
+#   container_name: iledepipa.mautic.app
+#   hostname: iledepipa.mautic.app
 #   volumes:
-#     - /var/run/docker.sock:/tmp/docker.sock:ro
-    
-nhrd.mautic.app:
+#     - ./volumes/app:/var/www/html
+#   links:
+#     - iledepipa.mautic.db
+#   environment:
+#     - VIRTUAL_HOST=mkt.iledepipa.com.br
+#     - MAUTIC_DB_HOST=iledepipa.mautic.db
+#     - MAUTIC_DB_USER=root
+#     - MAUTIC_DB_PASSWORD=mysqlrootpassword
+#     - MAUTIC_TRUSTED_PROXIES=0.0.0.0/0
+
+# iledepipa.mautic.db:
+#   container_name: iledepipa.mautic.db
+#   hostname: iledepipa.mautic.db
+#   image: mysql:5.6
+#   volumes:
+#      - ./volumes/db:/var/lib/mysql
+#   environment:
+#     MYSQL_ROOT_PASSWORD: mysqlrootpassword
+#     MYSQL_DATABASE: mautic
+#     MYSQL_USER: root
+#     MYSQL_PASSWORD: mautic
+
+
+
+
+
+
+
+# iledepipa.mautic.app:
+#   image: nhrd/mautic
+#   container_name: iledepipa.mautic.app
+#   hostname: iledepipa.mautic.app
+#   links:
+#     - iledepipa.mautic.db:mysql
+#   ports:
+#     - 8080:80
+#   volumes:
+#     - ./volumes/app:/var/www/html
+#   environment:
+#     - VIRTUAL_HOST=mkt.iledepipa.com.br
+
+# iledepipa.mautic.db:
+#   container_name: iledepipa.mautic.db
+#   hostname: iledepipa.mautic.db
+#   image: mysql:5.6
+#   volumes:
+#      - ./volumes/db:/var/lib/mysql
+#   environment:
+#     MYSQL_ROOT_PASSWORD: example
+
+mautic:
   image: nhrd/mautic
   container_name: nhrd.mautic.app
   hostname: nhrd.mautic.app
-  # expose:
-  #   - "80"
-  # ports:
-  #   - 80
   links:
-    - nhrd.mautic.db
+    - mauticdb:mysql
+  volumes:
+    - ./volumes/app:/var/www/html
   environment:
     - VIRTUAL_HOST=mkt.nhrd.co
-    - MAUTIC_DB_HOST=nhrd.mautic.db
-    - MAUTIC_DB_USER=root
-    - MAUTIC_DB_PASSWORD=mysqlrootpassword
-    - MAUTIC_TRUSTED_PROXIES=0.0.0.0/0
 
-nhrd.mautic.db:
-  container_name: nhrd.mautic.db
-  hostname: nhrd.mautic_db
+mauticdb:
   image: mysql:5.6
-  # expose:
-  #   - "3306"
+  container_name: nhrd.mautic.db
+  hostname: nhrd.mautic.db
+  volumes:
+     - ./volumes/db:/var/lib/mysql
   environment:
-    MYSQL_ROOT_PASSWORD: mysqlrootpassword
-    MYSQL_DATABASE: mautic
-    MYSQL_USER: root
-    MYSQL_PASSWORD: mautic
+    MYSQL_ROOT_PASSWORD: XiNCSiuVqK34
