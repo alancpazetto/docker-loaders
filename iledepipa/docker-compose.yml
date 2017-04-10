@@ -18,4 +18,4 @@ mauticdb:
   volumes:
      - ./volumes/db:/var/lib/mysql
   environment:
-    MYSQL_ROOT_PASSWORD: XiNCSiuVqK34
+    MYSQL_ROOT_PASSWORD: NB54Cp6Vb92d
