@@ -66,22 +66,32 @@ if ! [ -e app/config/local.php ]; then
         chown www-data:www-data /var/www/html/app/logs
 fi
 
-if [[ "$MAUTIC_RUN_CRON_JOBS" == "true" ]]; then
-    echo >&2 "Running cron."
-    if [ ! -e /var/log/cron.pipe ]; then
-        mkfifo /var/log/cron.pipe
-        chown www-data:www-data /var/log/cron.pipe
-    fi
-    (tail -f /var/log/cron.pipe | while read line; do echo "[CRON] $line"; done) &
-    CRONLOGPID=$!
-    cron -f &
-    CRONPID=$!
-else
-    echo >&2 "Not running cron as requested."
-fi
+# if [[ "$MAUTIC_RUN_CRON_JOBS" == "true" ]]; then
+#     echo >&2
+#     echo >&2 "Running cron."
+#     if [ ! -e /var/log/cron.pipe ]; then
+#         mkfifo /var/log/cron.pipe
+#         chown www-data:www-data /var/log/cron.pipe
+#     fi
+#     (tail -f /var/log/cron.pipe | while read line; do echo "[CRON] $line"; done) &
+#     CRONLOGPID=$!
+#     cron -f &
+#     CRONPID=$!
+# else
+#     echo >&2 "Not running cron as requested."
+# fi
 
 echo >&2
 echo >&2 "========================================================================"
+
+if [ ! -z $MAUTIC_RUN_CRON_JOBS ]; then
+    while ( : ) ; do echo Updating lead lists...; php app/console mautic:leadlists:update ; sleep 900 ; done &
+    while ( : ) ; do echo Updating campaigns...; php app/console mautic:campaigns:update ; sleep 900 ; done &
+    while ( : ) ; do echo Processing email...; php app/console mautic:email:process ; sleep 900 ; done &
+    while ( : ) ; do echo Fetching email...; php app/console mautic:fetch:email ; sleep 900 ; done &
+    while ( : ) ; do echo Processing webhooks...; php app/console mautic:webhooks:process ; sleep 900 ; done &
+    while ( : ) ; do echo Downloading geoip database...; php app/console mautic:iplookup:download ; sleep 900 ; done &
+fi
 
 "$@" &
 MAINPID=$!
