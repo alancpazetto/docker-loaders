@@ -70,8 +70,9 @@ if [[ "$MAUTIC_RUN_CRON_JOBS" == "true" ]]; then
     # mkdir /var/spool
     # mkdir -p /var/spool/cron
     
-    crontab /etc/cron.d/mautic
-    crontab -l
+    echo >&2
+    crontab -u www-data /etc/cron.d/mautic
+    # crontab -l
 
     echo >&2
     echo >&2 "Running cron."
@@ -81,7 +82,7 @@ if [[ "$MAUTIC_RUN_CRON_JOBS" == "true" ]]; then
     fi
     (tail -f /var/log/cron.pipe | while read line; do echo "[CRON] $line"; done) &
     CRONLOGPID=$!
-    cron -f &
+    # cron -f &
     CRONPID=$!
 else
     echo >&2 "Not running cron as requested."
