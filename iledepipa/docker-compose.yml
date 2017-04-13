@@ -6,10 +6,9 @@ mautic:
     - mauticdb:mysql
   volumes:
     - ./volumes/app:/var/www/html
+    - ./volumes/var:/var/
   environment:
     - VIRTUAL_HOST=mkt.iledepipa.com.br
-  # ports:
-  #   - 8080:80
 
 mauticdb:
   image: mysql:5.6
