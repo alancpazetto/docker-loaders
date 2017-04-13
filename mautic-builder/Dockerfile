@@ -39,8 +39,10 @@ COPY docker-entrypoint.sh /entrypoint.sh
 COPY makeconfig.php /makeconfig.php
 COPY makedb.php /makedb.php
 
+RUN mkdir /var/spool
+RUN mkdir /var/spool/cron
 COPY mautic.crontab /etc/cron.d/mautic
-COPY mautic.crontab /var/spool/cron/crontabs/mautic
+# COPY mautic.crontab /var/spool/cron/crontabs/mautic
 # RUN crontab /etc/cron.d/mautic
 # RUN crontab /etc/cron.d/mautic
 
