@@ -67,8 +67,8 @@ if ! [ -e app/config/local.php ]; then
 fi
 
 if [[ "$MAUTIC_RUN_CRON_JOBS" == "true" ]]; then
-    mkdir /var/spool
-    mkdir /var/spool/cron
+    # mkdir /var/spool
+    mkdir -p /var/spool/cron
     echo >&2
     echo >&2 "Running cron."
     if [ ! -e /var/log/cron.pipe ]; then
