@@ -52,7 +52,7 @@ RUN chmod 644 /etc/cron.d/mautic.cron
 # RUN touch /var/log/mautic.cron.log
 # RUN chmod +rw /var/log/mautic.cron.log
 
-RUN /usr/bin/crontab /etc/cron.d/mautic.cron
+RUN crontab /etc/cron.d/mautic.cron
 
 
 # RUN chmod 0644 /etc/cron.d/mautic
