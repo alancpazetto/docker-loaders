@@ -1,1 +1,1 @@
-*/1 * * * * . echo "CRON"
+*/1 * * * * root echo "CRON"
