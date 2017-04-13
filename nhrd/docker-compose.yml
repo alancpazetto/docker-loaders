@@ -57,6 +57,7 @@ mautic:
   image: nhrd/mautic
   container_name: nhrd.mautic.app
   hostname: nhrd.mautic.app
+  restart: always
   links:
     - mauticdb:mysql
   volumes:
