@@ -71,9 +71,9 @@ if [[ "$MAUTIC_RUN_CRON_JOBS" == "true" ]]; then
     # mkdir -p /var/spool/cron
     
     echo >&2
-    # crontab -u www-data /etc/cron.d/mautic
+    crontab -u www-data /mautic.crontab
     # crontab -l
-
+    
     echo >&2
     echo >&2 "Running cron."
     
