@@ -69,6 +69,10 @@ fi
 if [[ "$MAUTIC_RUN_CRON_JOBS" == "true" ]]; then
     # mkdir /var/spool
     # mkdir -p /var/spool/cron
+    
+    crontab /etc/cron.d/mautic
+    crontab -l
+
     echo >&2
     echo >&2 "Running cron."
     if [ ! -e /var/log/cron.pipe ]; then
