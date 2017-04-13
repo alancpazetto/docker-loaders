@@ -63,6 +63,7 @@ mautic:
     - ./volumes/app:/var/www/html
   environment:
     - VIRTUAL_HOST=mkt.nhrd.co
+    - MAUTIC_RUN_CRON_JOBS=true
 
 mauticdb:
   image: mysql:5.6
