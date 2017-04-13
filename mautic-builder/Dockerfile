@@ -42,9 +42,18 @@ COPY makedb.php /makedb.php
 # RUN mkdir /var/spool
 # RUN mkdir /var/spool/cron
 
-COPY mautic.crontab /etc/cron.d/mautic
-COPY mautic.crontab /etc/crontab
-# COPY mautic.crontab /var/spool/cron/crontab/www-data
+# COPY mautic.crontab /etc/cron.d/mautic
+# COPY mautic.crontab /etc/crontab
+
+
+COPY mautic.crontab /etc/cron.d/mautic.cron
+RUN chmod 644 /etc/cron.d/mautic.cron
+
+# RUN touch /var/log/mautic.cron.log
+# RUN chmod +rw /var/log/mautic.cron.log
+
+RUN /usr/bin/crontab /etc/cron.d/mautic.cron
+
 
 # RUN chmod 0644 /etc/cron.d/mautic
 # RUN touch /var/log/cron.log

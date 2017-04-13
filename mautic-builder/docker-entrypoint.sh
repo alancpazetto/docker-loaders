@@ -76,14 +76,52 @@ if [[ "$MAUTIC_RUN_CRON_JOBS" == "true" ]]; then
 
     echo >&2
     echo >&2 "Running cron."
+    
     if [ ! -e /var/log/cron.pipe ]; then
         mkfifo /var/log/cron.pipe
         chown www-data:www-data /var/log/cron.pipe
     fi
+
     (tail -f /var/log/cron.pipe | while read line; do echo "[CRON] $line"; done) &
     CRONLOGPID=$!
     cron -f &
     CRONPID=$!
+    
+    # while true; do
+    #     # Cron jobs here
+        
+    #     php /var/www/html/app/console mautic:segments:update > /var/log/cron.pipe 2>&1
+    #     sleep 15000
+
+    #     php /var/www/html/app/console mautic:campaigns:rebuild > /var/log/cron.pipe 2>&1
+    #     sleep 15000
+
+    #     php /var/www/html/app/console mautic:campaigns:trigger > /var/log/cron.pipe 2>&1
+    #     sleep 15000
+
+    #     php /var/www/html/app/console mautic:messages:send > /var/log/cron.pipe 2>&1
+    #     sleep 15000
+
+    #     php /var/www/html/app/console mautic:emails:send > /var/log/cron.pipe 2>&1
+    #     sleep 15000
+
+    #     php /var/www/html/app/console mautic:email:fetch > /var/log/cron.pipe 2>&1
+    #     sleep 15000
+
+    #     php /var/www/html/app/console mautic:social:monitoring > /var/log/cron.pipe 2>&1
+    #     sleep 15000
+
+    #     php /var/www/html/app/console mautic:webhooks:process > /var/log/cron.pipe 2>&1
+    #     sleep 15000
+
+    #     php /var/www/html/app/console mautic:broadcasts:send > /var/log/cron.pipe 2>&1
+    #     sleep 15000
+
+    #     php /var/www/html/app/console mautic:iplookup:download > /var/log/cron.pipe 2>&1
+    #     sleep 60000
+
+    # done
+
 else
     echo >&2 "Not running cron as requested."
 fi
