@@ -62,7 +62,7 @@ mautic:
     - mauticdb:mysql
   volumes:
     - ./volumes/app:/var/www/html
-    - ./volumes/crontab:/etc/cron.d/mautic
+    - ./volumes/crontab:/etc/cron.d
   environment:
     - VIRTUAL_HOST=mkt.nhrd.co
 
