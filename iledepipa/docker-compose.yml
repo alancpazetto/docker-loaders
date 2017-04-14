@@ -2,11 +2,13 @@ mautic:
   image: nhrd/mautic
   container_name: iledepipa.mautic.app
   hostname: iledepipa.mautic.app
+  restart: always
   links:
     - mauticdb:mysql
   volumes:
-    - ./volumes/app:/var/www/html
-    - ./volumes/var:/var/
+    - ./volumes/media/files:/var/www/html/media/files
+    - ./volumes/media/images:/var/www/html/media/images
+    # - ./volumes/app:/var/www/html/app
   environment:
     - VIRTUAL_HOST=mkt.iledepipa.com.br
 

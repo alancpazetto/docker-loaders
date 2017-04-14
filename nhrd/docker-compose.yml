@@ -1,58 +1,3 @@
-# iledepipa.mautic.app:
-#   image: nhrd/mautic
-#   container_name: iledepipa.mautic.app
-#   hostname: iledepipa.mautic.app
-#   volumes:
-#     - ./volumes/app:/var/www/html
-#   links:
-#     - iledepipa.mautic.db
-#   environment:
-#     - VIRTUAL_HOST=mkt.iledepipa.com.br
-#     - MAUTIC_DB_HOST=iledepipa.mautic.db
-#     - MAUTIC_DB_USER=root
-#     - MAUTIC_DB_PASSWORD=mysqlrootpassword
-#     - MAUTIC_TRUSTED_PROXIES=0.0.0.0/0
-
-# iledepipa.mautic.db:
-#   container_name: iledepipa.mautic.db
-#   hostname: iledepipa.mautic.db
-#   image: mysql:5.6
-#   volumes:
-#      - ./volumes/db:/var/lib/mysql
-#   environment:
-#     MYSQL_ROOT_PASSWORD: mysqlrootpassword
-#     MYSQL_DATABASE: mautic
-#     MYSQL_USER: root
-#     MYSQL_PASSWORD: mautic
-
-
-
-
-
-
-
-# iledepipa.mautic.app:
-#   image: nhrd/mautic
-#   container_name: iledepipa.mautic.app
-#   hostname: iledepipa.mautic.app
-#   links:
-#     - iledepipa.mautic.db:mysql
-#   ports:
-#     - 8080:80
-#   volumes:
-#     - ./volumes/app:/var/www/html
-#   environment:
-#     - VIRTUAL_HOST=mkt.iledepipa.com.br
-
-# iledepipa.mautic.db:
-#   container_name: iledepipa.mautic.db
-#   hostname: iledepipa.mautic.db
-#   image: mysql:5.6
-#   volumes:
-#      - ./volumes/db:/var/lib/mysql
-#   environment:
-#     MYSQL_ROOT_PASSWORD: example
-
 mautic:
   image: nhrd/mautic
   container_name: nhrd.mautic.app
@@ -61,8 +6,8 @@ mautic:
   links:
     - mauticdb:mysql
   volumes:
-    - ./volumes/app:/var/www/html
-    - ./volumes/crontab:/etc/cron.d
+    - ./volumes/media/files:/var/www/html/media/files
+    - ./volumes/media/images:/var/www/html/media/images
   environment:
     - VIRTUAL_HOST=mkt.nhrd.co
 
