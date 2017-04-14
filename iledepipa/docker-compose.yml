@@ -4,7 +4,7 @@ mautic:
   hostname: iledepipa.mautic.app
   restart: always
   links:
-    - mauticdb:mysql_ile
+    - mauticdb:mysql
   volumes:
     - ./volumes/media/files:/var/www/html/media/files
     - ./volumes/media/images:/var/www/html/media/images
