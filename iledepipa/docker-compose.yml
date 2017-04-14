@@ -4,11 +4,10 @@ mautic:
   hostname: iledepipa.mautic.app
   restart: always
   links:
-    - mauticdb:mysql
+    - mauticdb:mysql_ile
   volumes:
     - ./volumes/media/files:/var/www/html/media/files
     - ./volumes/media/images:/var/www/html/media/images
-    # - ./volumes/app:/var/www/html/app
   environment:
     - VIRTUAL_HOST=mkt.iledepipa.com.br
 
