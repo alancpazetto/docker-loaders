@@ -1,5 +1,5 @@
 # GENERAL
-0 0 * * *	~/docker-loaders/mysql-backup.sh
+0 0 * * *	/home/ec2-user/docker-loaders/mysql-backup/mysql-backup.sh
 
 # NHRD
 8,23,38,52 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:segments:update
