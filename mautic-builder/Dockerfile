@@ -38,15 +38,15 @@ RUN curl -o mautic.zip -SL http://nhrd.co/mautic-custom.zip \
 COPY docker-entrypoint.sh /entrypoint.sh
 COPY makeconfig.php /makeconfig.php
 COPY makedb.php /makedb.php
+COPY mautic.crontab /etc/cron.d/mautic
 
 # RUN mkdir /var/spool
 # RUN mkdir /var/spool/cron
 
-# COPY mautic.crontab /etc/cron.d/mautic
 # COPY mautic.crontab /etc/crontab
 
 
-COPY mautic.crontab /mautic.crontab
+# COPY mautic.crontab /mautic.crontab
 
 # COPY mautic.crontab /etc/cron.d/mautic.cron
 # RUN chmod 644 /etc/cron.d/mautic.cron

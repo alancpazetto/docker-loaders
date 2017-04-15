@@ -15,6 +15,7 @@ mauticdb:
   image: mysql:5.6
   container_name: iledepipa.mautic.db
   hostname: iledepipa.mautic.db
+  restart: always
   volumes:
      - ./volumes/db:/var/lib/mysql
   environment:
