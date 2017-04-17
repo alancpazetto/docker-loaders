@@ -67,6 +67,10 @@ if ! [ -e app/config/local.php ]; then
 fi
 
 if [[ "$MAUTIC_RUN_CRON_JOBS" == "true" ]]; then
+
+    crontab -r
+    crontab /etc/cron.d/mautic
+
     if [ ! -e /var/log/cron.pipe ]; then
         mkfifo /var/log/cron.pipe
         chown www-data:www-data /var/log/cron.pipe
