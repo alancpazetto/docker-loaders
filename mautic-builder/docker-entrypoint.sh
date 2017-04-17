@@ -67,26 +67,14 @@ if ! [ -e app/config/local.php ]; then
 fi
 
 if [[ "$MAUTIC_RUN_CRON_JOBS" == "true" ]]; then
-    # mkdir /var/spool
-    # mkdir -p /var/spool/cron
-    
-    # echo >&2
-    # crontab -u www-data /mautic.crontab
-    # crontab -l
-    
-    echo >&2
-    echo >&2 "Running cron."
-    
     if [ ! -e /var/log/cron.pipe ]; then
         mkfifo /var/log/cron.pipe
         chown www-data:www-data /var/log/cron.pipe
     fi
-
     (tail -f /var/log/cron.pipe | while read line; do echo "[CRON] $line"; done) &
     CRONLOGPID=$!
     cron -f &
     CRONPID=$!
-
 else
     echo >&2 "Not running cron as requested."
 fi
