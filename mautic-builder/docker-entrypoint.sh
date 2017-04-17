@@ -68,7 +68,7 @@ fi
 
 if [[ "$MAUTIC_RUN_CRON_JOBS" == "true" ]]; then
 
-    crontab -r
+    # crontab -r
     crontab /etc/cron.d/mautic
 
     if [ ! -e /var/log/cron.pipe ]; then
@@ -91,6 +91,7 @@ MAINPID=$!
 
 shut_down() {
     if [[ "$MAUTIC_RUN_CRON_JOBS" == "true" ]]; then
+        crontab -r
         kill -TERM $CRONPID || echo 'Cron not killed. Already gone.'
         kill -TERM $CRONLOGPID || echo 'Cron log not killed. Already gone.'
     fi
