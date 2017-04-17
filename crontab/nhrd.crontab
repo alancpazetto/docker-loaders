@@ -1,28 +1,28 @@
 # GENERAL
-0 0 * * *	/home/ec2-user/docker-loaders/mysql-backup/mysql-backup.sh
+0 0 * * *	/home/ec2-user/docker-loaders/mysql-backup/mysql-backup.sh 2>&1
 
 # NHRD
-8,23,38,52 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:segments:update
-5,20,35,50 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:campaigns:rebuild
-2,17,32,47 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:campaigns:trigger
-0,15,30,45 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:messages:send
-0,15,30,45 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:emails:send
-0,15,30,45 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:email:fetch
-0,15,30,45 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:social:monitoring
-0,15,30,45 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:webhooks:process
-0,15,30,45 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:broadcasts:send
-         0 4 15 * *   docker exec nhrd.mautic.app php /var/www/html/app/console mautic:iplookup:download
+8,23,38,52 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:segments:update 2>&1
+5,20,35,50 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:campaigns:rebuild 2>&1
+2,17,32,47 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:campaigns:trigger 2>&1
+0,15,30,45 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:messages:send 2>&1
+0,15,30,45 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:emails:send 2>&1
+0,15,30,45 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:email:fetch 2>&1
+0,15,30,45 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:social:monitoring 2>&1
+0,15,30,45 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:webhooks:process 2>&1
+0,15,30,45 * * * *    docker exec nhrd.mautic.app php /var/www/html/app/console mautic:broadcasts:send 2>&1
+         0 4 15 * *   docker exec nhrd.mautic.app php /var/www/html/app/console mautic:iplookup:download 2>&1
 
 
 # ILE DE PIPA
-8,23,38,52 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:segments:update
-5,20,35,50 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:campaigns:rebuild
-2,17,32,47 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:campaigns:trigger
-0,15,30,45 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:messages:send
-0,15,30,45 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:emails:send
-0,15,30,45 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:email:fetch
-0,15,30,45 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:social:monitoring
-0,15,30,45 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:webhooks:process
-0,15,30,45 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:broadcasts:send
-         0 4 15 * *   docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:iplookup:download
+8,23,38,52 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:segments:update 2>&1
+5,20,35,50 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:campaigns:rebuild 2>&1
+2,17,32,47 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:campaigns:trigger 2>&1
+0,15,30,45 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:messages:send 2>&1
+0,15,30,45 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:emails:send 2>&1
+0,15,30,45 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:email:fetch 2>&1
+0,15,30,45 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:social:monitoring 2>&1
+0,15,30,45 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:webhooks:process 2>&1
+0,15,30,45 * * * *    docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:broadcasts:send 2>&1
+         0 4 15 * *   docker exec iledepipa.mautic.app php /var/www/html/app/console mautic:iplookup:download 2>&1
 

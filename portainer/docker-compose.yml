@@ -1,0 +1,6 @@
+portainer:
+  image: portainer/portainer
+  container_name: portainer
+  hostname: portainer
+  ports: 
+    - "9000:9000"
